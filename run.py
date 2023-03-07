@@ -80,14 +80,32 @@ def calculate_surplus_data(sales_row):
 
 
 
+
 def update_worksheet(data, worksheet):
     """
-    
+    Receives a list of integers to be inserted into a worksheet
+    Update the relevant worksheet with the data provided
     """
     print(f"Updating {worksheet} worksheet..\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
     worksheet_to_update.append_row(data)
     print(f"{worksheet} worksheet updated successfully\n")
+
+
+def get_last_5_entries_sales():
+    """
+    
+    """
+    sales = SHEET.worksheet("sales")
+    # column = sales.col_values(3)
+    # print(column)
+
+    columns = []
+    for ind in range(1, 7):
+        column = sales.col_values(ind)
+        columns.append(column[-5:])
+    return columns
+
 
 
 def main():
@@ -102,4 +120,5 @@ def main():
 
 
 print("Welcome to Love Sanwiches Data Automation")
-main()
+# main()
+get_last_5_entries_sales()
